@@ -1,0 +1,4 @@
+<FontAwesomeIcon icon="fa-regular fa-circle-play" />
+<FontAwesomeIcon icon="fa-regular fa-circle-pause" />
+<FontAwesomeIcon icon="fa-regular fa-circle-stop" />
+<FontAwesomeIcon icon="fa-regular fa-trash-can" />

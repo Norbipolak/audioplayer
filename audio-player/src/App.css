@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 10px 0;
+}
+
+.player-controls {
+    /*
+    Háromfelé bontjuk, szóvak ebben lesz 3 div a következő className-ekkel .play-stop, indicator(hol tart a track), volume
+    */
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    /*
+    hogy legyen valamilyen háttérszíne az egész felső résznek 
+    */
+    background-color: #2e4f6c;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    /*
+    adtunk ennek is az egésznek is az audio-player-ben egy border-radius-t
+    */
+    margin-bottom: 15px;
+    /*
+    hogy a következő elem, ami alatta lesz az a .audio-information eltávolodjon tőle 
+    */
+}
+
+.audio-player {
+    max-width: 500px;
+    /* height: 350px;  mert nem fértek ki a dolgok, amik benne szerettünk volna, hogy legyenek, ezért ez auto lesz*/
+    height: auto;
+    background-color: #5a9ad2;
+    border: 1px solid #4d83b3;
+    padding: 15px;
+    margin: 15px auto;
+    box-shadow: 0px 0px 4px black;
+    /*
+0px: This represents the horizontal offset of the shadow. In this case, there is no horizontal offset (the shadow is directly behind the element).
+
+0px: This represents the vertical offset of the shadow. Similarly, there is no vertical offset (the shadow is directly behind the element).
+
+4px: This is the blur radius of the shadow. It determines how blurry or sharp the edges of the shadow will be. 
+In this case, the shadow will have a slight blur with a radius of 4 pixels.
+
+black: This is the color of the shadow. In this example, the shadow will be black.
+    */
+    border-radius: 15px;
+    text-align: center;
+}
+
+.play-pause-stop {
+    font-size: 30px;
+    /*hogy milyen nagyok legyenek a fontawesome-os ikonok, amiket beleraktunk*/
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/*
+Csinálunk egy .pointer class-t, amit majd megadunk ahova kell, mert arra majd sokhelyen szükségünk lesz
+pl. itt is, ha felé megyünk ezeknek a ikonoknak is 
+    <div className="play-pause-stop"> 
+        <FontAwesomeIcon className="pointer"
+        icon="fa-regular fa-circle-play" />
+        <FontAwesomeIcon className="pointer"
+        icon="fa-regular fa-circle-stop" />
+    </div>
+*/
+
+.audio-information, .tracklist-information {
+    /*
+ez is egy grid lesz, mint a players-control, a címnek lesz 4fr, az időnek pedig 1fr
+*/
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    background-color: #2e4f6c;
+    padding: 15px;
+    border-radius: 10px;
+    color:white; /*mert, így jobban látszódik ezzen a background-color-on a fehér információ, amit belerakunk*/
+    /*
+    Ugyanugy, mint a player-controls-nál, ide is megadjuk a margin-bottom-ot, hogy a következő elem, ami alatta lesz eltávolodjon tőle
+    */
+}
+.tracklist {
+    /*ebben lesznek bent a track-ek, amikből tudunk választani, hogy melyiket rakjuk majd be*/
+    height: 185px;
+    border-radius: 10px;
+    background-color: #2e4f6c;
+    padding: 5px;
+    /*
+    Azért, ha túl sok ilyen tracklist-element van és nem fér ki, kimegy a tracklist-ből erre -> 
+    */
+    overflow: auto;
+}
+.tracklist-element {
+    display: grid; 
+    grid-template-columns: 4fr 1fr;
+    padding: 3px;
+    color:white;
+    /*
+    Hogy megkülönböztetjük egy kicsit a többitől(a tracklist-től, amiben benne van), más background-color-t kap majd 
+    */
+    background-color: #4d83b3;
+    margin-bottom: 3px;
+    /*
+    a következő szám, ami ugyanebben a tracklist-ben található és ugyanilyen formázású, mint a tracklist-element, ezek elkülönüljenek 
+    egymástól 
+    */
+    border-radius: 5px;/*ezt is lekerekítjük*/
+    border: 1px solid #5a9ad2;/*még kap egy bordert is*/
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+}
+
+/*
+A tracklist-ben létrehoztunk egy overflow: auto-t ha nem férnének ki a tracklist-element-ek, amik abba vannak benne 
+akkor megjelenik egy görgetősáv automatikusan és ezt lehet formázni, hogy jobban nézzen ki
+-> 
+*/
+::-webkit-scrollbar {
+    width: 10px; /*milyen széles legyen a scrollbar*/
+}
+
+::-webkit-scrollbar-track {
+    /*ez lesz a sáv, amin majd görgetünk*/
+    background-color: #dbdbdb;
+}
+
+::-webkit-scrollbar-thumb {
+    /*ez, amit majd megfogunk*/
+    background-color: #406c93;
+    border-radius: 5px;
+}
+/*és hogyha felévisszük a kurzort*/
+::-webkit-scrollbar-thumb:hover {
+    background-color: #496ba6;
+}
+
+/*
+mivel a margin-bottom: 15px sok helyen kell(ugye az audio-player-ünkben van négy dolog egymás alatt és ezeknek el kell különilni egymástól), 
+ezért erre csinálunk egy külön osztályt, amit majd megadunk a szükséges elemeknek
+*/
+.mb-15 {
+    margin-bottom: 15px;
+}
